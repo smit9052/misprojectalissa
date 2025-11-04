@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alissa Smith - Portfolio</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    
+    <style>
+        /* ADDED: Styling for the new inline images to match the portfolio aesthetic */
+        .inline-image-home {
+            float: right; /* Float the image to the right for a better layout with the text */
+            width: 250px; 
+            height: auto; 
+            margin: 0 0 1rem 2rem; /* Top, Right, Bottom, Left margin */
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: var(--shadow-light);
+            border: 3px solid var(--primary-color); 
+        }
+
+        /* Clear floats after image sections */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Ensure paragraph text color is correct for the main box */
+        .intro-text p {
+            color: var(--primary-color) !important;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="discover.html">Discover UMD</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Desktop Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="discover.html">Discover UMD</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <h1>Alissa Smith</h1>
+        
+        <div class="profile-section">
+            <img src="images/mispic1.PNG" alt="Alissa Smith, a student at UMD, smiling for a professional profile photo." class="profile-image">
+            <div class="intro-text">
+                <p>My name is Alissa Smith and I am a student at UMD. I am currently in my last semester of the Human Biology program at the University of Minnesota Duluth, and hoping to pursue a career in private practice health care. My career goals revolve around helping people feel better in whatever way that looks like for me in my pursuit of graduate school, whether that is through physical therapy, athletic training, or nutritional therapy. I am interested in job shadowing in any of these fields. </p>
+            </div>
+        </div>
+        
+        <h2>My Hobbies & Interests</h2>
+        
+        <div class="clearfix">
+            <img src="images/ice.PNG" alt="Person in a wetsuit standing in cold water on a large chunk of ice floating in a lake." class="inline-image-home">
+            <p>I love doing anything outside, and am willing to try almost anything, up to and including **commandeering an ice chunk in the lake**.</p>
+        </div>
+
+        <div class="clearfix" style="margin-top: 2rem;">
+            <img src="images/bike2.PNG" alt="Three girls wearing helmets sit together on a chair lift, high above the ground." class="inline-image-home">
+            <p>Some of my favorites include **mountain biking and running**. For mountain biking, I enjoy doing cross-country rides, as well as downhill biking. I also enjoy running of any sort, although I have a particular love for trail running. One of my goals in the near future is to become a better swimmer.</p>
+        </div>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Alissa Smith. All rights reserved.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script src="js/script.js"></script> 
+</body>
+</html>

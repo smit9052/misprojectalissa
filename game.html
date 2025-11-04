@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harbor Jumper</title>
+    <link rel="stylesheet" href="CSS/style.css"> 
+    
+    <style>
+        /* This CSS is needed only for the game layout */
+        
+        /* 1. FIX: Remove the map texture layer only, keeping the cream content box (body::after) intact. */
+        body::before {
+            content: none !important;
+        }
+
+        /* 2. Remove the custom body/main overrides that were breaking the layout. 
+           We let style.css handle the background, padding, and layout box. */
+        
+        /* 3. MAIN FIX: Apply only the necessary flex properties to center the game content
+           horizontally inside the main content box. */
+        main {
+            /* Overriding the default main block display to use flexbox for centering */
+            display: flex; 
+            flex-direction: column;
+            align-items: center; /* Centers H1 and game area horizontally */
+            justify-content: flex-start; /* Keeps content starting from the top padding */
+        }
+        
+        /* 4. GAME WRAPPER: Ensures the game stays centered and applies bottom spacing */
+        .game-area {
+            max-width: 100%; 
+            width: 800px; /* Explicit width matching the canvas for proper containment */
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem; /* Add margin to separate from the footer area */
+        }
+        
+        /* H1 TWEAK: Ensure H1 has proper spacing from the top of the content box (optional, but good practice) */
+        main h1 {
+            margin-bottom: 1rem;
+        }
+
+        /* Original Game Canvas Styles (Retained) */
+        .game-container {
+            position: relative;
+            border: 3px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            background: #000;
+        }
+
+        #gameCanvas {
+            display: block;
+            background: linear-gradient(180deg, #87CEEB 0%, #B0E0E6 50%, #4682B4 100%);
+        }
+
+        .ui-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* ... (Rest of the game-specific CSS remains the same) ... */
+        .score {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #f7f9f0; 
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            display: none;
+            pointer-events: all;
+        }
+
+        .game-over h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+
+        .game-over p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .restart-btn {
+            background: #4ecdc4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .restart-btn:hover {
+            background: #45b7aa;
+            transform: scale(1.05);
+        }
+
+        .start-screen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            pointer-events: all;
+        }
+
+        .start-screen h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .start-screen p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .start-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .instructions {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="discover.html">Discover UMD</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Desktop Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="discover.html">Discover UMD</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <h1>The Harbor Jumper Game</h1> 
+        
+        <div class="game-area">
+            <div class="game-container">
+                <canvas id="gameCanvas" width="800" height="400"></canvas>
+                
+                <div class="ui-overlay">
+                    <div class="score" id="score">Score: 0</div>
+                    
+                    <div class="start-screen" id="startScreen">
+                        <h1>HARBOR JUMPER</h1>
+                        <p>Help the fish jump between boats in Duluth Harbor!</p>
+                        <p style="font-size: 14px; margin-top: 10px;">Triple jump available!</p>
+                        <button class="start-btn" onclick="startGame()">START GAME</button>
+                    </div>
+                    
+                    <div class="game-over" id="gameOver">
+                        <h2>GAME OVER!</h2>
+                        <p>Final Score: <span id="finalScore">0</span></p>
+                        <button class="restart-btn" onclick="restartGame()">PLAY AGAIN</button>
+                    </div>
+                    
+                    <div class="instructions" id="instructions" style="display: none;">
+                        Press SPACE or CLICK to JUMP!<br>
+                        Help the fish jump between boats!<br>
+                        You can triple jump in mid-air!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Alissa Smith. All rights reserved.</p>
+    </footer>
+
+    <script src="js/game.js"></script>
+    <script src="js/script.js"></script> 
+</body>
+</html>

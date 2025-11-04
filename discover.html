@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alissa Smith - Discover UMD & Duluth</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        /* Basic styling for the new page content */
+        .content-section {
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .content-section h2 {
+            color: #2c3e50; /* Assuming a dark color from your general style */
+            margin-top: 30px;
+        }
+        .video-container {
+            width: 100%;
+            max-width: 700px; /* Limit the max width of the video player */
+            margin: 20px auto;
+            text-align: center;
+        }
+        .umd-video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="discover.html">Discover UMD</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Desktop Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="discover.html">Discover UMD</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <h1>Discover UMD & Duluth</h1>
+        
+        <div class="content-section">
+            <h2>Why UMD</h2>
+            <p>I chose UMD because it was in Duluth and a smart financial decision. The school offers both Bachelor of Arts and Bachelor of Science for Biology, allowing for different focuses on the same subjects for different careers. As a transfer student, I chose to not participate in many of the typical student activities, but I am currently involved in InterVarsity Christian Fellowship on campus, which hosts large group in the Garden room every Thursday at 7pm.</p>
+
+            <h2>Duluth Community & Outdoors</h2>
+            <p>I appreciate that Duluth has a lot of outdoor sports and many miles of trail. The outdoor community has been a fun space to enter in my adult life, because there are all levels of intensity, so it’s a safe space for beginners in a variety of sports! UMD’s RSOP (Recreational Sports and Outdoor Program) has many resources for multiple outdoor sports, and resources for beginners as well. There is a great local music scene in Duluth, with many local bands. There are also many outdoor clubs to join that can be found through social media. There are different communities for almost any hobby that one can have!</p>
+        </div>
+
+        <div class="video-container">
+            <h2>Discover Duluth</h2>
+            <video controls class="umd-video">
+                <source src="videos/Umdvideo.mp4" type="video/mp4">
+                <p>Your browser does not support the video tag. Please ensure the 'Umdvideo.mp4' file is accessible.</p>
+            </video>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Alissa Smith. All rights reserved.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

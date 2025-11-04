@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alissa Smith - Hobbies</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <style>
+        /* Setting the default image to float left for the "flowing" effect */
+        .inline-image {
+            float: left;
+            /* Adjust margins to push text away from the image on the right */
+            margin: 0 2rem 1rem 0; 
+        }
+        /* New class to float the image right */
+        .inline-image-right {
+            float: right !important; /* Use !important to ensure it overrides .inline-image */
+            /* Adjust margins to push text away from the image on the left */
+            margin: 0 0 1rem 2rem !important; 
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="discover.html">Discover UMD</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Desktop Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="discover.html">Discover UMD</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="career.html">Career</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Hobbies</h1>
+
+        <div class="hobbies-content flowing">
+            <p>I love trying just about anything outdoors, and am particularly passionate about mountain biking and trail running, while just dipping my toes into surfing and climbing. As an ex-gymnast, I also enjoy spending time doing anything gymnastics-related.</p>
+
+            <p>
+                <img src="images/runpic.PNG" alt="Girl giving a thumbs up while running on rocks with a view of trees in the background" class="inline-image">
+                Trail running is particularly special to me because I began this sport by running up Ely’s peak in Duluth because I wanted a workout. This turned into extended trail runs and various injuries. With strengthening, training, and PT, I am continuing one of my favorite sports.
+            </p>
+
+            <p>
+                <img src="images/bike1.PNG" alt="Girl smiling while holding bike, standing on rock with fall colors" class="inline-image inline-image-right">
+                Another sport I have enjoyed getting into in adulthood is mountain biking. I have met some wonderful people who are into this sport, and there is a big sense of community for the mountain bikers in Duluth. I have enjoyed the workout of a long ride, as well as downhill laps via ski-lift. It is so fun to be able to progress, when things that used to seem so difficult to you, you cease to notice as a challenge. This is a sport that can be done in some beautiful places, and can be as difficult or as easy as you make it. Some favorite memories of mine are my first race, the feeling of finally clearing a jump, and all the time spent biking with one of my closest friends and biggest inspirations. Another fun memory of mine is biking in Minnesota, and having a coyote jump out on the trail in front of me. I enjoy biking with people who are better than me, because it makes me want to catch up with them.
+            </p>
+
+            <p>
+                <img src="images/hike.PNG" alt="Girl smiling at a fire watch tower in the mountains" class="inline-image">
+                I also enjoy hiking and many other various outdoor activities. I enjoy traveling to new places, especially West to the mountains. I have three very active roommates that help get me outside, and some best friends who encourage me to be active. Finding community in my hobbies has been a major part in getting outside!I highly recommend joining a club that aligns with the things you love to do, as you may learn something new.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Alissa Smith. All rights reserved.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
