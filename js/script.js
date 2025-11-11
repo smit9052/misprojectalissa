@@ -1,72 +1,46 @@
-// Back to Top Button Functionality
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
-
-// Show/hide back to top button based on scroll position
-window.addEventListener('scroll', function() {
-    const backToTopButton = document.getElementById('backToTop');
-    if (backToTopButton) {
-        if (window.pageYOffset > 300) {
-            backToTopButton.classList.add('show');
-        } else {
-            backToTopButton.classList.remove('show');
-        }
-    }
-});
-
-// Mobile Menu Toggle Functionality
+/* Mobile Menu Toggle Logic */
 function toggleMobileMenu() {
-    const mobileNav = document.querySelector('.mobile-nav');
-    const mobileOverlay = document.querySelector('.mobile-overlay');
+    // Get the required elements
+    const menu = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.mobile-overlay');
     const hamburger = document.querySelector('.hamburger');
-    
-    if (mobileNav && mobileOverlay && hamburger) {
-        mobileNav.classList.toggle('active');
-        mobileOverlay.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    }
+
+    // Toggle the 'active' class on all three elements
+    menu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    hamburger.classList.toggle('active');
 }
 
 function closeMobileMenu() {
-    const mobileNav = document.querySelector('.mobile-nav');
-    const mobileOverlay = document.querySelector('.mobile-overlay');
+    const menu = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.mobile-overlay');
     const hamburger = document.querySelector('.hamburger');
-    
-    if (mobileNav && mobileOverlay && hamburger) {
-        mobileNav.classList.remove('active');
-        mobileOverlay.classList.remove('active');
-        hamburger.classList.remove('active');
-    }
+
+    // Remove the 'active' class from all three elements (used when clicking the overlay)
+    menu.classList.remove('active');
+    overlay.classList.remove('active');
+    hamburger.classList.remove('active');
 }
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Add click event listeners for mobile menu
-    const mobileToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileOverlay = document.querySelector('.mobile-overlay');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-    
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', toggleMobileMenu);
-    }
-    
-    if (mobileOverlay) {
-        mobileOverlay.addEventListener('click', closeMobileMenu);
-    }
-    
-    // Close mobile menu when clicking on nav links
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-    });
-    
-    // Close mobile menu on window resize (if switching to desktop)
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            closeMobileMenu();
-        }
-    });
-});
+/* Back to Top Button Logic */
+// Listen for scroll events on the window
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  const backToTopButton = document.getElementById("backToTop");
+  
+  // Check if button exists before trying to modify it
+  if (backToTopButton) {
+      // Show the button if the user scrolls more than 20px
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+  }
+}
+
+function scrollToTop() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
