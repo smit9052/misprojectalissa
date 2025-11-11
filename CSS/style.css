@@ -1,24 +1,20 @@
 /* style.css - CINEMATIC EARTHY MAP THEME */
 
-/* New Cinematic Font Imports */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Oswald:wght@300;400;600;700&display=swap');
 
-/* ===== VARIABLES ===== */
 :root {
-    /* New Cinematic Earthy Palette (Inspired by PowerPoint) */
-    --primary-color: #2b453a;    /* Deep Forest Green (Background) */
-    --secondary-color: #a3b092;  /* Muted Moss */
-    --accent-color: #e09f3e;     /* Terracotta / Earth Gold */
-    --text-color: #f7f9f0;       /* Light Cream Text (for dark backgrounds) */
-    --background-color: #2b453a; /* Deep Forest Green (Body BG) */
-    --content-box-bg: #f7f9f0;   /* Off-White / Light Cream (Main Content Box) */
+    --primary-color: #2b453a;
+    --secondary-color: #a3b092;
+    --accent-color: #e09f3e;
+    --text-color: #f7f9f0;
+    --background-color: #2b453a;
+    --content-box-bg: #f7f9f0;
     --gray: #ccc;
-    --section-bg: #fff; /* White background for sections inside the box */
+    --section-bg: #fff;
     --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.2);
     --shadow-strong: 0 16px 32px rgba(0, 0, 0, 0.4);
 }
 
-/* ===== RESET & BASE STYLES ===== */
 * {
     margin: 0;
     padding: 0;
@@ -26,19 +22,19 @@
 }
 
 body {
-    /* Cinematic Fonts: Montserrat for body, Oswald for headers */
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     line-height: 1.7;
-    color: var(--text-color); /* Body text color for when it's outside the main box */
+    color: var(--text-color);
     background-color: var(--background-color);
-    min-height: 100vh; /* Ensure the body spans the full viewport height */
-    position: relative; /* Needed for the map texture and content box */
+    min-height: 100vh;
+    position: relative;
     overflow-x: hidden;
-    padding: 3rem; /* Padding to allow the map edges to show */
+    padding: 3rem;
+    display: flex;
+    flex-direction: column; 
 }
 
-/* TOPOGRAPHICAL MAP PATTERN (Base Layer) */
 body::before {
     content: "";
     position: fixed;
@@ -46,20 +42,16 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -2; /* Behind everything */
+    z-index: -2;
     background-color: var(--background-color);
 
-    /* Darker, map-like noise texture for the edges */
     background-image:
-        /* Subtle cloud/mist effect */
         radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 70%, rgba(255,255,255,0.05) 100%),
-        /* Dark topographical/noise texture */
         url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a3b092' fill-opacity='0.1' %3E%3Cpath d='M1 0h1v1H1V0zm3 0h1v1H4V0zm0 2h1v1H4V2zm-3 0h1v1H1V2zm0 2h1v1H1V4zm3 0h1v1H4V4z'/%3E%3C/g%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 6px 6px;
 }
 
-/* MAIN CONTENT BOX (Cream Colored) */
 body::after {
     content: "";
     position: absolute;
@@ -68,40 +60,36 @@ body::after {
     left: 3rem;
     right: 3rem;
     background-color: var(--content-box-bg);
-    border-radius: 15px; /* Softer, modern corners */
+    border-radius: 15px;
     box-shadow: var(--shadow-strong);
-    z-index: -1; /* Behind the content, but on top of the map texture */
+    z-index: -1;
 }
 
-/* Target all main containers to sit within the cream box */
 nav, main, footer {
     position: relative;
     z-index: 10;
-    /* Reset background colors as they are now on the cream box */
     background-color: transparent !important;
 }
 
-/* ===== NAVIGATION (Sits on top of the cream box) ===== */
 nav {
-    /* Use Primary color for NAV BAR to match the dark cinematic theme */
     background-color: var(--primary-color) !important;
     padding: 1rem 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 15px 15px 0 0; /* Match top radius of the content box */
-    margin: -3rem -3rem 0 -3rem; /* Overlap the edge of the cream box */
+    border-radius: 15px 15px 0 0;
+    margin: -3rem -3rem 0 -3rem;
     padding-top: 3rem;
 }
 
 nav ul {
     list-style: none;
-    display: flex; /* Ensures links are horizontal */
+    display: flex;
     justify-content: center;
     gap: 3rem;
 }
 
 nav a {
     color: var(--text-color);
-    font-family: 'Oswald', sans-serif; /* APPLYING CINEMATIC FONT TO BUTTONS */
+    font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 400;
@@ -115,25 +103,24 @@ nav a:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-
-/* ===== MAIN CONTENT ===== */
 main {
-    max-width: 900px; /* Reduced width for a more focused, cinematic look */
+    max-width: 900px;
     margin: 2rem auto;
-    padding: 2rem; /* Added padding inside the main element */
-    color: var(--text-color); /* Reset text color for the cream box */
+    padding: 2rem;
+    color: var(--text-color);
+    flex-grow: 1;
 }
 
 h1, h2 {
-    font-family: 'Oswald', sans-serif; /* Cinematic header font */
-    color: var(--primary-color); /* Dark text on cream background */
+    font-family: 'Oswald', sans-serif;
+    color: var(--primary-color);
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 h1 {
     margin-bottom: 0.5rem;
-    font-size: 3.5rem; /* Larger, more dramatic H1 */
+    font-size: 3.5rem;
     font-weight: 700;
     line-height: 1;
 }
@@ -142,7 +129,6 @@ h2 {
     color: var(--accent-color);
     margin: 2rem 0 0.75rem 0;
     font-weight: 600;
-    /* Removed old border-bottom */
     padding-bottom: 0.5rem;
     font-size: 1.8rem;
 }
@@ -152,13 +138,11 @@ section {
 }
 
 p {
-    color: var(--text-color); /* Set paragraph text to the dark color */
+    color: var(--text-color);
 }
 
-/* HOME PAGE FLOW IMPROVEMENTS */
 .profile-section {
     display: grid;
-    /* Reduced image column size and gap for better flow */
     grid-template-columns: 200px 1fr;
     gap: 2.5rem; 
     margin: 3rem 0;
@@ -167,39 +151,36 @@ p {
 
 .profile-image {
     width: 100%;
-    max-width: 200px; /* Reduced max size for better flow */
+    max-width: 200px;
     box-shadow: var(--shadow-light);
     border: 3px solid var(--primary-color); 
 }
 
-/* HOBBIES PAGE FLOW IMPROVEMENTS */
 .hobbies-content.flowing p {
-    /* Increased paragraph margin-bottom for better vertical separation */
     margin-bottom: 2rem;
     line-height: 1.7;
 }
 
 .inline-image {
     float: left;
-    width: 240px; /* Increased size for better visual presence */
-    height: 180px; /* Fixed height for consistent look */
-    margin: 0 2rem 1rem 0; /* Increased right margin for separation */
+    width: 240px;
+    height: 180px;
+    margin: 0 2rem 1rem 0;
     border-radius: 8px;
-    object-fit: cover; /* Ensures image fills the space without distortion */
+    object-fit: cover;
     box-shadow: var(--shadow-light);
 }
 
 .hobby-section {
-    background-color: var(--section-bg); /* White background on the cream box */
+    background-color: var(--section-bg);
     border: 1px solid var(--secondary-color);
     box-shadow: var(--shadow-light);
 }
 
-/* RESUME BUTTON STYLING */
 .button {
     display: inline-block;
-    background-color: var(--accent-color); /* Terracotta / Earth Gold */
-    color: var(--content-box-bg) !important; /* Light Cream Text */
+    background-color: var(--accent-color);
+    color: var(--content-box-bg) !important;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -213,30 +194,26 @@ p {
 }
 
 .button:hover {
-    background-color: #d28c30; /* Slightly darker terracotta on hover */
+    background-color: #d28c30;
     box-shadow: var(--shadow-strong);
 }
 
-/* ===== FOOTER ===== */
 footer {
-    /* Must manually set the padding here to ensure it aligns with the bottom of the box */
     background-color: var(--secondary-color) !important;
     color: var(--primary-color);
     text-align: center;
     padding: 2rem 3rem 3rem 3rem;
     margin-top: 5rem;
     font-size: 0.9rem;
-    border-radius: 0 0 15px 15px; /* Match bottom radius of the content box */
-    margin: 5rem -3rem -3rem -3rem; /* Overlap the edge of the cream box */
+    border-radius: 0 0 15px 15px;
+    margin: 5rem -3rem -3rem -3rem;
 }
 
-/* Reset text color for all content inside the new cream box */
 nav, nav a, main, main h2, main p, footer {
     color: var(--primary-color) !important;
 }
 
-/* Final fine-tuning for text colors */
-nav a { color: var(--text-color) !important; } /* Nav links should stay light/white */
+nav a { color: var(--text-color) !important; }
 nav a:hover { background-color: rgba(255, 255, 255, 0.2) !important; }
 h2 { color: var(--accent-color) !important; }
 h1 { color: var(--primary-color) !important; }
@@ -244,7 +221,6 @@ h1 { color: var(--primary-color) !important; }
 .hobbies-content p { color: var(--primary-color) !important; }
 .hobby-section p { color: var(--primary-color) !important; }
 
-/* ===== GLOBAL HOVER EFFECTS FOR LINKS & BUTTONS ===== */
 main a {
     color: var(--accent-color);
     text-decoration: none;
@@ -266,7 +242,6 @@ button:hover {
     filter: brightness(0.97);
 }
 
-/* ===== BACK TO TOP BUTTON ===== */
 .back-to-top {
     position: fixed;
     bottom: 30px;
@@ -297,9 +272,6 @@ button:hover {
     opacity: 1;
 }
 
-/* ===== MOBILE RESPONSIVE DESIGN ===== */
-
-/* Hide mobile menu elements on desktop by default */
 .mobile-menu-toggle,
 .mobile-nav,
 .mobile-overlay {
@@ -307,12 +279,10 @@ button:hover {
 }
 
 @media screen and (max-width: 768px) {
-    /* Mobile body adjustments */
     body {
         padding: 1rem;
     }
     
-    /* Mobile content box adjustments */
     body::after {
         top: 1rem;
         bottom: 1rem;
@@ -320,19 +290,16 @@ button:hover {
         right: 1rem;
     }
     
-    /* Mobile navigation - hide desktop nav */
     nav {
         display: none;
     }
     
-    /* Show mobile menu elements on mobile */
     .mobile-menu-toggle,
     .mobile-nav,
     .mobile-overlay {
         display: block;
     }
     
-    /* Mobile hamburger menu */
     .mobile-menu-toggle {
         position: fixed;
         top: 20px;
@@ -375,7 +342,6 @@ button:hover {
         transform-origin: center;
     }
     
-    /* Hamburger animation states */
     .hamburger.active span:nth-child(1) {
         transform: rotate(45deg) translate(6px, 6px);
         background-color: var(--accent-color);
@@ -391,7 +357,6 @@ button:hover {
         background-color: var(--accent-color);
     }
     
-    /* Add subtle pulse animation when menu is closed */
     .hamburger:not(.active) span {
         animation: subtlePulse 2s ease-in-out infinite;
     }
@@ -401,7 +366,6 @@ button:hover {
         50% { opacity: 0.7; }
     }
     
-    /* Mobile dropdown menu */
     .mobile-nav {
         position: fixed;
         top: 0;
@@ -473,7 +437,6 @@ button:hover {
         transform: scale(0.98);
     }
     
-    /* Mobile overlay */
     .mobile-overlay {
         position: fixed;
         top: 0;
@@ -492,7 +455,6 @@ button:hover {
         visibility: visible;
     }
     
-    /* Mobile main content adjustments */
     main {
         margin-top: 0;
         padding: 1rem;
@@ -508,7 +470,6 @@ button:hover {
         font-size: 1.5rem;
     }
     
-    /* Mobile profile section */
     .profile-section {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -520,7 +481,6 @@ button:hover {
         margin: 0 auto;
     }
     
-    /* Mobile inline images */
     .inline-image,
     .inline-image-home {
         float: none;
@@ -536,7 +496,6 @@ button:hover {
         margin: 1rem auto !important;
     }
     
-    /* Mobile video container */
     .video-container {
         margin: 1rem 0;
     }
@@ -546,7 +505,6 @@ button:hover {
         height: auto;
     }
     
-    /* Mobile practice info boxes */
     .practice-info {
         margin: 20px 0;
         padding: 15px;
@@ -556,7 +514,6 @@ button:hover {
         width: 50px;
     }
     
-    /* Mobile back to top button */
     .back-to-top {
         bottom: 20px;
         right: 20px;
@@ -565,14 +522,12 @@ button:hover {
         font-size: 18px;
     }
     
-    /* Mobile footer */
     footer {
         padding: 1.5rem 1rem 1rem 1rem;
         margin: 3rem -1rem -1rem -1rem;
         font-size: 0.8rem;
     }
     
-    /* Mobile PDF container */
     .pdf-container {
         margin: 1rem 0;
     }
@@ -581,7 +536,6 @@ button:hover {
         min-height: 400px;
     }
     
-    /* Mobile game adjustments */
     .game-area {
         width: 100%;
         max-width: 100%;
@@ -599,7 +553,6 @@ button:hover {
     }
 }
 
-/* Tablet adjustments */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     body {
         padding: 2rem;
@@ -629,7 +582,6 @@ button:hover {
     }
 }
 
-/* ===== PDF VIEWER STYLES ===== */
 .pdf-container {
     margin: 2rem 0;
     border-radius: 8px;
