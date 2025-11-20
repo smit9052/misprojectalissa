@@ -18,6 +18,10 @@
             box-shadow: var(--shadow-light);
             border: 3px solid var(--primary-color); 
         }
+        .inline-image-left {
+            float: left !important;
+            margin: 0 2rem 1rem 0 !important;
+        }
 
         /* Clear floats after image sections */
         .clearfix::after {
@@ -31,10 +35,29 @@
             color: var(--primary-color) !important;
         }
 
+        /* NEW: Styling for the video container for better visual integration */
+        .video-container {
+            margin: 3rem auto;
+            max-width: 700px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-strong);
+            background-color: var(--primary-color);
+        }
+
+        .video-container h3 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.5rem 1rem;
+            margin: 0;
+            background-color: #1e3a2f; /* Slightly darker header */
+        }
+
     </style>
 </head>
 <body>
-    <!-- Mobile Menu Toggle Button -->
     <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
         <div class="hamburger">
             <span></span>
@@ -43,7 +66,6 @@
         </div>
     </button>
 
-    <!-- Mobile Navigation Menu -->
     <div class="mobile-nav">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -55,10 +77,8 @@
         </ul>
     </div>
 
-    <!-- Mobile Overlay -->
     <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
 
-    <!-- Desktop Navigation -->
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -73,35 +93,48 @@
     <main>
         <h1>Alissa Smith</h1>
         
+
+        
         <div class="profile-section">
             <img src="images/mispic1.PNG" alt="Alissa Smith, a student at UMD, smiling for a professional profile photo." class="profile-image">
             <div class="intro-text">
-                <p>My name is Alissa Smith and I am a student at UMD. I am currently in my last semester of the Human Biology program at the University of Minnesota Duluth, and hoping to pursue a career in private practice health care. My career goals revolve around helping people feel better in whatever way that looks like for me in my pursuit of graduate school, whether that is through physical therapy, or athletic training. I am interested in job shadowing in either of these fields. </p>
+                <p>My name is Alissa Smith and I am a student at UMD. I am currently in my last semester of the Human Biology program at the University of Minnesota Duluth, and hoping to pursue a career in private practice health care. My career goals revolve around helping people feel better in whatever way that looks like for me in my pursuit of graduate school, whether that is through physical therapy, athletic training, or nutritional therapy. I am interested in job shadowing in any of these fields. </p>
             </div>
         </div>
         
         <h2>My Hobbies & Interests</h2>
         
-        <div class="clearfix">
-            <img src="images/ice.PNG" alt="Person in a wetsuit standing in cold water on a large chunk of ice floating in a lake." class="inline-image-home">
-            <p>I love doing anything outside, and am willing to try almost anything, up to and including commandeering an ice chunk in the lake in February. Duluth is the perfect place to get involved and try almost any outdoor sport that one wishes.</p>
-        </div>
-
-        <div class="clearfix" style="margin-top: 2rem;">
-            <img src="images/bike2.PNG" alt="Three girls wearing helmets sit together on a chair lift, high above the ground." class="inline-image-home">
-            <p>Some of my favorites include mountain biking and running. When mountain biking, I enjoy doing cross-country rides, as well as downhill biking. There are plenty of trails for all skill levels here in Duluth. I also enjoy running of any sort, although I have a particular love for trail running. One of my goals in the near future is to become a better swimmer.</p>
+        <div class="hobbies-content flowing">
+            <p>
+                <img src="images/ice.PNG" alt="Person in a wetsuit standing in cold water on a large chunk of ice floating in a lake." class="inline-image-home">
+                I love doing anything outside, and am willing to try almost anything, up to and including commandeering an ice chunk in the lake. Duluth is the perfect place to get involved in a sport for any season and to stay active. I have enjoyed becoming involved in the outdoor community as I have gotten older. Many of my friends have been people I have bonded with over sports, campus ministry, or church. I am a Christian, and have loved getting to know my church community here in Duluth as well.
+            </p>
+            <p>
+                <img src="images/bike2.PNG" alt="Three girls wearing helmets sit together on a chair lift, high above the ground." class="inline-image-home inline-image-left">
+                Some of my favorite hobbies include mountain biking and running. For mountain biking, I enjoy doing cross-country rides, as well as downhill biking. Duluth has miles of trails for athletes of all levels. I also enjoy running of any sort, although I have a particular love for trail running. One of my goals in the near future is to become a better swimmer.
+            </p>
+            <p>
+                <img src="images/bike3.PNG" alt="Person mountain biking on a trail in the woods." class="inline-image-home">
+                Mountain biking is one of my favorite ways to explore the outdoors and stay active. Whether it's riding local trails or discovering new places, biking brings a sense of adventure and accomplishment.
+            </p>
         </div>
         
+
+        <h2 style="margin-top: 2.5rem; font-family: 'Oswald', sans-serif; color: var(--primary-color); text-align: left;">Intro Video</h2>
+        <div class="video-container" style="max-width: 340px; margin: 0 auto 2rem auto; text-align: center; background: none; box-shadow: none;">
+            <video class="umd-video" width="100%" height="auto" controls style="display: block; max-width: 100%; border-radius: 8px; box-shadow: var(--shadow-light);">
+                <source src="videos/Introvideo.mp4" type="video/mp4">
+                Your browser does not support the video tag. Please check the video file path and format.
+            </video>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2025 Alissa Smith. All rights reserved.</p>
     </footer>
 
-    <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
 
     <script src="js/script.js"></script> 
 </body>
-
 </html>
